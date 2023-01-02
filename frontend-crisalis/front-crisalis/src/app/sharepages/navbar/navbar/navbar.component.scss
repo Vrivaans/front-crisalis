@@ -1,0 +1,19 @@
+
+$colorPrimary: #01b3ba;
+$colorSecondary: white;
+.nav-link.active.active-link, .nav-link active, .active-link, .navbar-light{
+  color: $colorPrimary;
+  font-weight: bold;
+}
+a:hover{
+  color: $colorPrimary
+}
+#brand,#home{
+  color:white;
+}
+img{
+  height: 30px;
+  width: auto;
+}
+
+

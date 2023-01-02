@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+
+<div class="page-content">
+
+  <div *ngIf="!esta_logeado;
+  then paraLogearse;
+  else alHome;" > </div>
+
+  <ng-template #paraLogearse>
+    <app-login></app-login>
+  </ng-template>
+
+  <ng-template #alHome>
+    <app-home></app-home>
+  </ng-template>
+
+
