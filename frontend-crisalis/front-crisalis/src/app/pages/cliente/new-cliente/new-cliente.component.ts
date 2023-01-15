@@ -15,7 +15,7 @@ nombre: string = ""
 
 
 
-  
+
 onCreate() {
 throw new Error('Method not implemented.');
 }
