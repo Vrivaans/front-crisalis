@@ -1,6 +1,12 @@
 <nav class="navbar navbar-expand-lg bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" id="brand">Back office</a>
+
+    <a class="navbar-brand" class="nav-link active"
+    aria-current="page"
+    routerLink=""
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: true }"
+    id="brand">Back office </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -13,18 +19,34 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a
+      <ul class="navbar-nav ms-auto" *ngIf="esta_logeado">
+
+          <li class="nav-item" >
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink=""
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              id="home"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">  <a
             class="nav-link active"
             aria-current="page"
-            routerLink=""
+            routerLink="/clientes"
             routerLinkActive="active-link"
             [routerLinkActiveOptions]="{ exact: true }"
-            id="home"
-            >Home</a
-          >
-        </li>
+            id="clientes"
+            >Clientes</a
+          ></li>
+
+
+
+
+
+        <!--
         <li class="nav-item">
           <button
             type="button"
@@ -35,6 +57,7 @@
             Iniciá sesión
           </button>
         </li>
+        -->
         <li class="nav-item">
           <a
             class="nav-link active"
@@ -57,3 +80,7 @@
     </div>
   </div>
 </nav>
+
+
+
+

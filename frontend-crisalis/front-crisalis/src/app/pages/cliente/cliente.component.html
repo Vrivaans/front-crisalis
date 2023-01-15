@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<div class="SinLogear" *ngIf="!esta_logeado"><h1>Por favor, inicie sesión para continuar</h1></div>
+<div class="clientes" *ngIf="esta_logeado">
+<div class="row">
+  <h1>Lista de clientes</h1>
+</div>
+<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#nuevoClienteModal">Nuevo cliente</button>
+
+<!-- Modal -->
+<div class="modal fade" id="nuevoClienteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo cliente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-new-cliente></app-new-cliente>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <table class="table mt-7">
+    <tbody>
+        <td>
+          <h2>Nombre</h2>
+        </td>
+        <td>
+          <h2>Apellido</h2>
+        </td>
+        <td>
+          <h2>Dni</h2>
+        </td>
+        <td>
+          <h2>Empresa</h2>
+        </td>
+      <tr *ngFor="let Cliente of cliente">
+        <td>
+          <h4>{{Cliente.nombre}}</h4>
+        </td>
+        <td>
+          <h4>{{Cliente.apellido}}</h4>
+        </td>
+        <td>
+          <h4>{{Cliente.dniCliente}}</h4>
+        </td>
+        <td>
+          <h4>{{Cliente.empresa}}</h4>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

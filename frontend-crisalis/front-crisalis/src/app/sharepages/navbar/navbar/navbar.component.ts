@@ -19,6 +19,9 @@ export class NavbarComponent implements OnInit {
     } else{
       this.esta_logeado = false;
     }
+
+
+
   }
   login(){
     this.router.navigate(['/login'])
@@ -29,4 +32,7 @@ export class NavbarComponent implements OnInit {
     window.location.reload();
 }
 
+
+
 }
+

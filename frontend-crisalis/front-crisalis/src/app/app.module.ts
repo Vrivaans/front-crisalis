@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { HomeComponent } from './pages/home/home.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ClienteComponent } from './pages/cliente/cliente.component';
+import { NewClienteComponent } from './pages/cliente/new-cliente/new-cliente.component';
 
 //import { interceptorProvider } from './services/interceptor-service';
 
@@ -23,7 +26,10 @@ import { HomeComponent } from './pages/home/home.component';
     FooterComponent,
     LoginComponent,
     RegistroComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent,
+    ClienteComponent,
+    NewClienteComponent
   ],
   imports: [
     BrowserModule,

@@ -44,8 +44,13 @@ export class LoginComponent implements OnInit {
         this.tokenService.setUsername(data.nombreUsuario);
         this.tokenService.setAuthorities(data.authorities);
         this.roles  = data.authorities;
-        this.router.navigate([''])
-        window.location.reload();
+        //this.router.navigate([''])
+
+        setTimeout(() =>{
+          this.router.navigate(['']);
+          window.location.href="/"
+        }, 500);
+        //window.location.reload();
       }, err => {this.isLogged = false
                   this.isLoginFail = true;
                 this.errMsj = err.error.mensaje;

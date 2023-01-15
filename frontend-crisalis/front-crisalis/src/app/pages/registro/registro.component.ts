@@ -24,7 +24,7 @@ registrar(){
   const newUser = new NuevoUsuario (this.nombre, this.nombreUsuario, this.email, this.password);
   this.authService.nuevo(newUser).subscribe(
     data => {
-      alert("Experiencia añadida");
+      alert("Bienvenido usuario");
       this.router.navigate(['/login']);
     }, err => {
       console.log("Hubo un error y no se guardó la información")
