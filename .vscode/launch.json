@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch CrisalisApplication",
+            "request": "launch",
+            "mainClass": "com.crisalis.crisalis.CrisalisApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CrisalisApplication<crisalis>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.crisalis.crisalis.CrisalisApplication",
+            "projectName": "crisalis",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
