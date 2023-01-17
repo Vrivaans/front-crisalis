@@ -15,6 +15,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ClienteComponent } from './pages/cliente/cliente.component';
 import { NewClienteComponent } from './pages/cliente/new-cliente/new-cliente.component';
+import { ProductoComponent } from './pages/producto/producto.component';
+import { NewProductoComponent } from './pages/producto/new-producto/new-producto.component';
+import { ServicioComponent } from './pages/servicio/servicio.component';
+import { NewServicioComponent } from './pages/servicio/new-servicio/new-servicio.component';
+import { EmpresaComponent } from './pages/empresa/empresa.component';
+import { NewEmpresaComponent } from './pages/empresa/new-empresa/new-empresa.component';
 
 //import { interceptorProvider } from './services/interceptor-service';
 
@@ -29,7 +35,13 @@ import { NewClienteComponent } from './pages/cliente/new-cliente/new-cliente.com
     HomeComponent,
     DashboardComponent,
     ClienteComponent,
-    NewClienteComponent
+    NewClienteComponent,
+    ProductoComponent,
+    NewProductoComponent,
+    ServicioComponent,
+    NewServicioComponent,
+    EmpresaComponent,
+    NewEmpresaComponent
   ],
   imports: [
     BrowserModule,

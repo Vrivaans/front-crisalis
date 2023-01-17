@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<div class="SinLogear" *ngIf="!esta_logeado"><h1>Por favor, inicie sesión para continuar</h1></div>
+<div class="clientes" *ngIf="esta_logeado">
+<div class="row">
+  <h1>Lista de empresas</h1>
+</div>
+<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#nuevaEmpresaModal">Nueva empresa</button>
+
+<!-- Modal -->
+<div class="modal fade" id="nuevaEmpresaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva empresa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-new-empresa></app-new-empresa>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div>
+  <table class="table mt-7">
+    <tbody>
+        <td>
+          <h2>CUIT</h2>
+        </td>
+        <td>
+          <h2>Razon social</h2>
+        </td>
+        <td>
+          <h2>Fecha de inicio de actividades</h2>
+        </td>
+
+      <tr *ngFor="let Empresa of empresa">
+        <td>
+          <h4>{{Empresa.cuit}}</h4>
+        </td>
+        <td>
+          <h4>{{Empresa.razonSocial}}</h4>
+        </td>
+        <td>
+          <h4>{{Empresa.fechaInicioActividades}}</h4>
+
+        </td>
+
+        <td>
+          <button class="btn btn-secondary">Editar</button>
+          <button class="btn btn-danger" (click)="delete(Empresa.id)">Borrar</button>
+        </td>
+
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

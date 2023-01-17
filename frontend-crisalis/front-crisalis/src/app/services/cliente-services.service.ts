@@ -29,7 +29,7 @@ export class ClienteServicesService {
   }
 
   public delete(id: number): Observable<any>{
-    return this.httpClient.delete<any>(this.url + `delete/${id}`)
+    return this.httpClient.delete<any>(this.url + `/borrar/cliente/${id}`)
   }
 
 }

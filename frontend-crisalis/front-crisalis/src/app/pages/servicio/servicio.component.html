@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="SinLogear" *ngIf="!esta_logeado"><h1>Por favor, inicie sesión para continuar</h1></div>
+<div class="clientes" *ngIf="esta_logeado">
+<div class="row">
+  <h1>Lista de servicios</h1>
+</div>
+<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#nuevoServicioModal">Nuevo servicio</button>
+
+<!-- Modal -->
+<div class="modal fade" id="nuevoServicioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo servicio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-new-servicio></app-new-servicio>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div>
+  <table class="table mt-7">
+    <tbody>
+        <td>
+          <h2>Nombre</h2>
+        </td>
+        <td>
+          <h2>Precio base</h2>
+        </td>
+        <td>
+          <h2>Precio del soporte</h2>
+        </td>
+
+      <tr *ngFor="let Servicio of servicio">
+        <td>
+          <h4>{{Servicio.nombre}}</h4>
+        </td>
+        <td>
+          <h4>{{Servicio.precioBase}}</h4>
+        </td>
+        <td>
+          <h4>{{Servicio.soportePrecio}}</h4>
+        </td>
+
+        <td>
+          <button class="btn btn-secondary">Editar</button>
+          <button class="btn btn-danger" (click)="delete(Servicio.id)">Borrar</button>
+        </td>
+
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

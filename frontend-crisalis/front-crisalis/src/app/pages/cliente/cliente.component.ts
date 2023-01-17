@@ -29,4 +29,17 @@ cargarClientes():void{
   this.clienteServices.listaClientes().subscribe(data => {this.cliente = data;})
 }
 
+delete(id?:number){
+  if(id != null){
+    this.clienteServices.delete(id).subscribe(
+      data => {
+        this.cargarClientes();
+      }, err => {
+        //alert("Hubo un error al borrar el cliente")
+        window.location.reload();
+      }
+    )
+  }
+}
+
 }

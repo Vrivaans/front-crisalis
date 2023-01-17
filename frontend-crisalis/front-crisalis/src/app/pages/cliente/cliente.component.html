@@ -17,10 +17,7 @@
       <div class="modal-body">
         <app-new-cliente></app-new-cliente>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
     </div>
   </div>
 </div>
@@ -45,14 +42,21 @@
           <h4>{{Cliente.nombre}}</h4>
         </td>
         <td>
-          <h4>{{Cliente.apellido}}</h4>
+          <h4>{{Cliente.dniCliente}}</h4>
         </td>
         <td>
-          <h4>{{Cliente.dniCliente}}</h4>
+          <h4>{{Cliente.apellido}}</h4>
+
         </td>
         <td>
           <h4>{{Cliente.empresa}}</h4>
         </td>
+        <td>
+          <button class="btn btn-secondary">Editar</button>
+          <button class="btn btn-danger" (click)="delete(Cliente.id)">Borrar</button>
+        </td>
+
+
       </tr>
     </tbody>
   </table>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+          <div class="form-group">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="precioBase" class="form-label">Precio base</label>
+            <input type="text" class="form-control" id="precioBase" name="precioBase" [(ngModel)]="precioBase" required>
+          </div>
+          <div class="form-group">
+            <label for="garantia" class="form-label">Garantia</label>
+            <input type="text" class="form-control" id="garantia" name="garantia" [(ngModel)]="garantia" required>
+          </div>
+
+
+          <button class="btn btn-primary">Añadir nuevo producto</button>
+      </form>
+    </div>
+  </div>
+</div>

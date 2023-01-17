@@ -1,5 +1,12 @@
 export class Empresa{
-  cuit!: number;
-  razon_social!: string;
+  id?:number
+  cuit!: string;
+  razonSocial!: string;
   fechaInicioActividades!: string;
+
+constructor(cuit: string, razonSocial: string, fechaInicioActividades: string){
+  this.cuit = cuit
+  this.razonSocial = razonSocial
+  this.fechaInicioActividades = fechaInicioActividades
+}
 }
