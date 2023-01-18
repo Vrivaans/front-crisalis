@@ -20,6 +20,7 @@ onCreate() {
     data =>{
 
       //this.router.navigate([''])
+      window.location.reload();
 
     }, err => {
       //alert("Hubo un error al cargar")
