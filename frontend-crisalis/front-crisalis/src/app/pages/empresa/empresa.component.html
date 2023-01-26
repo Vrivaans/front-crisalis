@@ -11,7 +11,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nueva empresa</h5>
+        <h3 class="modal-title" id="exampleModalLabel">Nueva empresa</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -25,26 +25,51 @@
 <div>
   <table class="table mt-7">
     <tbody>
+      <td>
+        <h5>ID</h5>
+      </td>
         <td>
-          <h2>CUIT</h2>
+          <h5>CUIT</h5>
         </td>
         <td>
-          <h2>Razon social</h2>
+          <h5>Razon social</h5>
         </td>
         <td>
-          <h2>Fecha de inicio de actividades</h2>
+          <h5>Fecha de inicio de actividades</h5>
+        </td>
+
+        <td>
+          <h5>Nombre</h5>
+        </td>
+        <td>
+          <h5>Apellido</h5>
+        </td>
+        <td>
+          <h5>Dni</h5>
         </td>
 
       <tr *ngFor="let Empresa of empresa">
-        <td>
-          <h4>{{Empresa.cuit}}</h4>
-        </td>
-        <td>
-          <h4>{{Empresa.razonSocial}}</h4>
-        </td>
-        <td>
-          <h4>{{Empresa.fechaInicioActividades}}</h4>
 
+        <td>
+          <p>{{Empresa.id}}</p>
+        </td>
+        <td>
+          <p>{{Empresa.cuit}}</p>
+        </td>
+        <td>
+          <p>{{Empresa.razonSocial}}</p>
+        </td>
+        <td>
+          <p>{{Empresa.fechaInicioActividades}}</p>
+        </td>
+        <td>
+          <p>{{Empresa.nombre}}</p>
+        </td>
+        <td>
+          <p>{{Empresa.apellido}}</p>
+        </td>
+        <td>
+          <p>{{Empresa.dniCliente}}</p>
         </td>
 
         <td>

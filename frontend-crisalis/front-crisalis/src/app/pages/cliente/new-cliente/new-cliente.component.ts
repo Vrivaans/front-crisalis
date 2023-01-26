@@ -12,7 +12,7 @@ export class NewClienteComponent {
 nombre: string = ""
 apellido: string = ""
 dniCliente:string =""
-cuit: string = ""
+
 
 constructor(private clienteServicesService: ClienteServicesService, private router:Router){}
 
@@ -21,16 +21,8 @@ ngOnInit():void{
 }
 
 
-
-
-
-
-
-
-
-
 onCreate() {
-  const cliente = new Cliente(this.apellido,this.nombre,this.dniCliente,this.cuit)
+  const cliente = new Cliente(this.dniCliente,this.nombre,this.apellido)
   this.clienteServicesService.save(cliente).subscribe(
     data =>{
 

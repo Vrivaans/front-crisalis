@@ -25,32 +25,35 @@
 <div>
   <table class="table mt-7">
     <tbody>
+      <td>
+        <h5>ID</h5>
+      </td>
         <td>
-          <h2>Nombre</h2>
+          <h5>Nombre</h5>
         </td>
         <td>
-          <h2>Apellido</h2>
+          <h5>Apellido</h5>
         </td>
         <td>
-          <h2>Dni</h2>
+          <h5>Dni</h5>
         </td>
-        <td>
-          <h2>Empresa</h2>
-        </td>
+
       <tr *ngFor="let Cliente of cliente">
         <td>
-          <h4>{{Cliente.nombre}}</h4>
+          <p>{{Cliente.id}}</p>
         </td>
         <td>
-          <h4>{{Cliente.dniCliente}}</h4>
+          <p>{{Cliente.nombre}}</p>
         </td>
         <td>
-          <h4>{{Cliente.apellido}}</h4>
+           <p>{{Cliente.apellido}}</p>
+        </td>
+        <td>
+
+          <p>{{Cliente.dniCliente}}</p>
 
         </td>
-        <td>
-          <h4>{{Cliente.empresa}}</h4>
-        </td>
+
         <td>
           <button class="btn btn-secondary">Editar</button>
           <button class="btn btn-danger" (click)="delete(Cliente.id)">Borrar</button>

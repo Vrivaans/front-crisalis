@@ -8,6 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./new-empresa.component.scss']
 })
 export class NewEmpresaComponent {
+dniCliente: string = ""
+nombre: string = ""
+apellido: string = ""
 cuit: string = ""
 razonSocial: string = ""
 fechaInicioActividades: string = ""
@@ -15,7 +18,7 @@ fechaInicioActividades: string = ""
 constructor(private empresaService: EmpresaServicesService){}
 
 onCreate() {
-  const empresa = new Empresa(this.cuit,this.razonSocial,this.fechaInicioActividades)
+  const empresa = new Empresa(this.dniCliente, this.nombre, this.apellido ,this.cuit,this.razonSocial,this.fechaInicioActividades)
   this.empresaService.save(empresa).subscribe(
     data =>{
 

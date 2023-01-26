@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
+
 <div class="SinLogear" *ngIf="!esta_logeado"><h1>Por favor, inicie sesión para continuar</h1></div>
-<div class="clientes" *ngIf="esta_logeado">
+   <div class="clientes" *ngIf="esta_logeado">
 <div class="row">
   <h1>Lista de servicios</h1>
 </div>
@@ -25,6 +26,9 @@
 <div>
   <table class="table mt-7">
     <tbody>
+      <td>
+        <h2>ID</h2>
+      </td>
         <td>
           <h2>Nombre</h2>
         </td>
@@ -36,6 +40,9 @@
         </td>
 
       <tr *ngFor="let Servicio of servicio">
+        <td>
+          <h4>{{Servicio.id}}</h4>
+        </td>
         <td>
           <h4>{{Servicio.nombre}}</h4>
         </td>

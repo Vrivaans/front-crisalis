@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
+
 <div class="SinLogear" *ngIf="!esta_logeado"><h1>Por favor, inicie sesión para continuar</h1></div>
+
 <div class="clientes" *ngIf="esta_logeado">
 <div class="row">
   <h1>Lista de productos</h1>
@@ -25,27 +27,27 @@
 <div>
   <table class="table mt-7">
     <tbody>
+      <td>
+        <h5>ID</h5>
+      </td>
         <td>
-          <h2>Nombre</h2>
+          <h5>Nombre</h5>
         </td>
         <td>
-          <h2>Precio</h2>
-        </td>
-        <td>
-          <h2>Garantia/Años</h2>
+          <h5>Precio</h5>
         </td>
 
       <tr *ngFor="let Producto of producto">
         <td>
-          <h4>{{Producto.nombre}}</h4>
+          <p>{{Producto.id}}</p>
         </td>
         <td>
-          <h4>{{Producto.precioBase}}</h4>
+          <p>{{Producto.nombre}}</p>
         </td>
         <td>
-          <h4>{{Producto.garantia}}</h4>
+          <p>{{Producto.precioBase}}</p>
+        </td>
 
-        </td>
 
         <td>
           <button class="btn btn-secondary">Editar</button>
