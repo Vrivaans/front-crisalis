@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+
+<div class="SinLogear" *ngIf="!esta_logeado"><h1>Por favor, inicie sesión para continuar</h1></div>
+<div class="pedidos" *ngIf="esta_logeado" >
+  <div class="row">
+    <h1>Lista de pedidos</h1>
+  </div>
+  <!-- <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#nuevaEmpresaModal">Nuevo pedido</button>
+
+
+  <div class="modal fade" id="nuevaEmpresaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Nueva empresa</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-new-empresa></app-new-empresa>
+        </div>
+
+      </div>
+    </div>
+  </div>
+   -->
+  <div>
+    <table class="table mt-7">
+      <tbody>
+        <td>
+          <h5>ID</h5>
+        </td>
+          <td>
+            <h5>Fecha del Pedido</h5>
+          </td>
+          <td>
+            <h5>Total del pedido</h5>
+          </td>
+          <td>
+            <h5>Está activo</h5>
+          </td>
+
+          <td>
+            <h5>Cliente</h5>
+          </td>
+          <td>
+            <h5>Empresa</h5>
+          </td>
+
+        <tr *ngFor="let OrderE of order">
+
+          <td>
+            <p>{{OrderE.id}}</p>
+          </td>
+          <td>
+            <p>{{OrderE.fechaPedido}}</p>
+          </td>
+          <td>
+            <p>{{OrderE.totalPedido}}</p>
+          </td>
+          <td>
+            <p>{{OrderE.activo}}</p>
+          </td>
+          <td *ngIf="OrderE.cliente === null">
+            <p>---</p>
+
+            <!-- <p>{{OrderE.cliente}}</p> -->
+          </td>
+           <td *ngIf="OrderE.cliente != null">
+                {{OrderE.cliente.nombre}}, {{OrderE.cliente.apellido}}
+           </td>
+           <td *ngIf="OrderE.empresa === null">
+            <p>---</p>
+
+            <!-- <p>{{OrderE.cliente}}</p> -->
+          </td>
+           <td *ngIf="OrderE.empresa != null">
+                {{OrderE.empresa.razonSocial}}
+           </td>
+
+          <td>
+            <button class="btn btn-secondary">Editar</button>
+            <button class="btn btn-danger" (click)="delete(OrderE.id)">Borrar</button>
+          </td>
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

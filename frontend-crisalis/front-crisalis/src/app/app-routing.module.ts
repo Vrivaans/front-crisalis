@@ -1,3 +1,4 @@
+import { PedidoComponent } from './pages/pedido/pedido.component';
 import { ServicioComponent } from './pages/servicio/servicio.component';
 import { MainComponent } from './main/main/main.component';
 import { NgModule, Component } from '@angular/core';
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'clientes', component:ClienteComponent},
   {path: 'productos', component:ProductoComponent},
   {path: 'servicios', component:ServicioComponent},
-  {path: 'empresas', component:EmpresaComponent}
+  {path: 'empresas', component:EmpresaComponent},
+  {path: 'pedidos', component:PedidoComponent}
 
 ];
 
