@@ -15,8 +15,54 @@
             <label for="activo" class="form-label">¿El pedido va a estar activo?</label>
             <input type="text" class="form-control" id="activo" name="activo" [(ngModel)]="activo" required>
           </div>
-          <h3>Quien realizó el pedido es:</h3>
-          <div class="form-group">
+          <h5>Quien realizó el pedido...:</h5>
+          <div class="form-check">
+            <button class="btn btn-dark pb-3 pt-3 " *ngIf="esEmpresa" (click)="esClienteOEmpresa()">¿Es cliente?</button>
+
+            <div class="btn-group ps-3" *ngIf="esEmpresa">
+              <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                Ver lista de empresas
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+              <div *ngFor="let Empresa of listaEmpresas">
+
+                <li><button class="dropdown-item" type="button" (click)="getEmpresa(Empresa.razonSocial, Empresa.cuit)" > {{Empresa.razonSocial}} {{Empresa.cuit}} </button></li>
+              </div>
+              </ul>
+            </div>
+
+            <button class="btn btn-dark pb-3 pt-3 " *ngIf="!esEmpresa" (click)="esClienteOEmpresa()">¿Es empresa?</button>
+
+            <div class="btn-group ps-3" *ngIf="!esEmpresa">
+              <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                Ver lista de clientes
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+             <div   *ngFor="let Cliente of listaClientes">
+              <li><button class="dropdown-item" type="button" (click)="getCliente(Cliente.dniCliente, Cliente.nombre, Cliente.apellido)"> {{Cliente.nombre}} {{Cliente.apellido}}, {{Cliente.dniCliente}} </button></li>
+
+             </div>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="pt-3 pb-1" *ngIf="isSelectedCliente && !esEmpresa">
+
+              <p>Nombre: {{clienteAux.nombre}} </p>
+              <p>Apellido: {{clienteAux.apellido}} </p>
+              <p>Dni: {{clienteAux.dniCliente}} </p>
+          </div>
+          <div class="pt-3 pb-1" *ngIf="isSelectedEmpresa && esEmpresa">
+            <p>Razón social: {{empresaAux.razonSocial}} </p>
+            <p>CUIT: {{empresaAux.cuit}} </p>
+          </div>
+
+
+
+
+
+          <!-- <div class="form-group">
             <label for="cliente" class="form-label">Datos del cliente</label>
             <input type="text" class="form-control" id="cliente" name="cliente" [(ngModel)]="cliente.apellido" required>
           </div>
@@ -27,10 +73,10 @@
           <div class="form-group">
             <label for="orderDetails" class="form-label">Detalles del pedido</label>
             <input type="text" class="form-control" id="orderDetails" name="orderDetails" [(ngModel)]="orderDetails" required>
-          </div>
+          </div> -->
 
 
-          <button class="btn btn-primary">Añadir nuevo pedido</button>
+          <button class="btn btn-primary ">Añadir nuevo pedido</button>
       </form>
     </div>
   </div>
