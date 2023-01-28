@@ -22,6 +22,7 @@ import { NewServicioComponent } from './pages/servicio/new-servicio/new-servicio
 import { EmpresaComponent } from './pages/empresa/empresa.component';
 import { NewEmpresaComponent } from './pages/empresa/new-empresa/new-empresa.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
+import { NewPedidoComponent } from './pages/pedido/new-pedido/new-pedido.component';
 
 //import { interceptorProvider } from './services/interceptor-service';
 
@@ -43,7 +44,8 @@ import { PedidoComponent } from './pages/pedido/pedido.component';
     NewServicioComponent,
     EmpresaComponent,
     NewEmpresaComponent,
-    PedidoComponent
+    PedidoComponent,
+    NewPedidoComponent
   ],
   imports: [
     BrowserModule,
