@@ -122,6 +122,13 @@ export class NewPedidoComponent {
     }
   }
 
+  getProducto(nombre: string, precioBase: number){
+
+  }
+  getServicio(nombre: string, precioBase: number, soportePrecio: number){
+
+  }
+
 
 
   onCreate(){
