@@ -8,6 +8,7 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { ClienteComponent } from './pages/cliente/cliente.component'
 import { ProductoComponent } from './pages/producto/producto.component';
 import { EmpresaComponent } from './pages/empresa/empresa.component';
+import { NewPedidoComponent } from './pages/pedido/new-pedido/new-pedido.component';
 
 const routes: Routes = [
   {path: '', component:MainComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'productos', component:ProductoComponent},
   {path: 'servicios', component:ServicioComponent},
   {path: 'empresas', component:EmpresaComponent},
-  {path: 'pedidos', component:PedidoComponent}
+  {path: 'pedidos', component:PedidoComponent},
+  {path: 'nuevo-pedido', component:NewPedidoComponent}
 
 ];
 

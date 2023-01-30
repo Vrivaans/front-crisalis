@@ -1,3 +1,5 @@
+import { TokenService } from './../../../services/token.service';
+import { DtoOrderDetails } from './../../../Models/dtoOrderDetails';
 import { ServicioServicesService } from './../../../services/servicio-services.service';
 import { ProductoServicesService } from './../../../services/producto-services.service';
 import { EmpresaServicesService } from './../../../services/empresa-services.service';
@@ -11,7 +13,8 @@ import { Router } from '@angular/router';
 import { Cliente } from 'src/app/Models/cliente';
 import { OrderDetail } from 'src/app/Models/orderDetail';
 import { Servicio } from 'src/app/Models/servicio';
-import { trigger } from '@angular/animations';
+import { literalMap } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-new-pedido',
@@ -24,12 +27,31 @@ export class NewPedidoComponent {
   listaEmpresas: Empresa[] = []
   listaProductos: Producto[] = []
   listaServicios: Servicio[] = []
+  listaDetalles: DtoOrderDetails[] = []
+
+  constructor(private router: Router, private pedidoServices: PedidosServicesService,
+    private clienteServices: ClienteServicesService,
+    private empresaServices: EmpresaServicesService,
+    private productosServices: ProductoServicesService,
+    private serviciosServices: ServicioServicesService,
+    private tokenService: TokenService
+    ){
+
+  }
+
 
   ngOnInit(): void{
     this.cargarEmpresas()
     this.cargarClientes()
     this.cargarProductos()
     this.cargarServicios()
+    this.cargarDetalles()
+
+    if (this.tokenService.getToken()) {
+      this.esta_logeado = true;
+    } else{
+      this.esta_logeado = false;
+    }
   }
 
 
@@ -37,6 +59,7 @@ export class NewPedidoComponent {
   esEmpresa: boolean = false
   isSelectedCliente: boolean = false
   isSelectedEmpresa: boolean = false
+  esta_logeado: boolean = false
 
   esClienteOEmpresa(){
 
@@ -60,16 +83,13 @@ export class NewPedidoComponent {
   fechaPedido: string = ""
   totalPedido: number = 0
   activo: boolean = false
+  garantia: number = 0
+  cantidad: number = 0
   cliente!: Cliente
   empresa!: Empresa
   orderDetails: OrderDetail[] = []
-  constructor(private router: Router, private pedidoServices: PedidosServicesService,
-    private clienteServices: ClienteServicesService,
-    private empresaServices: EmpresaServicesService,
-    private productosServices: ProductoServicesService,
-    private serviciosServices: ServicioServicesService){
 
-  }
+
 
   cargarClientes(){
     this.clienteServices.listaClientes().subscribe(data => {this.listaClientes = data;})
@@ -82,6 +102,9 @@ export class NewPedidoComponent {
   }
   cargarServicios(){
     this.serviciosServices.lista().subscribe(data => {this.listaServicios = data;})
+  }
+  cargarDetalles(){
+    this.listaDetalles
   }
   clienteAux = new Cliente( "", "", "")
   empresaAux = new Empresa ("","","","","","")
@@ -121,8 +144,26 @@ export class NewPedidoComponent {
       this.vaciarEmpresa()
     }
   }
+   //dtoOrderDetails = new DtoOrderDetails("",0,0,0,false,0)
 
   getProducto(nombre: string, precioBase: number){
+    let dtoOrderDetails: DtoOrderDetails = {
+      nombre:"",
+      cantidad: 0,
+      garantia: 0,
+      precioVenta: 0,
+      esServicio: false,
+      precioSoporte: 0
+
+    }
+    dtoOrderDetails.nombre = nombre
+    dtoOrderDetails.cantidad = 1
+    dtoOrderDetails.garantia = 1
+    dtoOrderDetails.precioVenta = precioBase
+    dtoOrderDetails.esServicio = false
+    dtoOrderDetails.precioSoporte = 0
+
+    this.listaDetalles.push(dtoOrderDetails)
 
   }
   getServicio(nombre: string, precioBase: number, soportePrecio: number){

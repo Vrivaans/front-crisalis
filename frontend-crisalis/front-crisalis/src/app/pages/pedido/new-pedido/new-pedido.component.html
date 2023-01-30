@@ -1,3 +1,9 @@
+<app-navbar></app-navbar>
+<!--
+<div class="SinLogear" *ngIf="!esta_logeado"><h1>Por favor, inicie sesión para continuar</h1></div>
+<div class="pedidos" *ngIf="esta_logeado" >  --> DESBLOQUEAR CUANDO TERMINE LAS PRUEBAS
+
+
 <div class="container">
   <div class="row">
     <div>
@@ -80,7 +86,7 @@
           </div>
 
           <!-- Espacio para colocar la lista de productos cuando haya una empresa seleccionada o un cliente -->
-          <div class="pt-3" *ngIf="isSelectedCliente || isSelectedEmpresa">
+          <div class="pt-3" *ngIf="isSelectedCliente && !esEmpresa || isSelectedEmpresa && esEmpresa   ">
 
             <div class="btn-group">
               <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -88,6 +94,7 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
              <div   *ngFor="let Producto of listaProductos">
+              <!-- POR LAS DUDAS DE QUE ALGO SALGA MAL, LA LINEA DEL BOTÓN ES ESTA XD -->
               <li><button class="dropdown-item" type="button" (click)="getProducto(Producto.nombre, Producto.precioBase)"> {{Producto.nombre}} ${{Producto.precioBase}} </button></li>
 
              </div>
@@ -107,7 +114,10 @@
             </div>
 
           </div>
-          <div class="listaItems">
+          <div class="listaItems" *ngFor="let DtoOrderDetails of listaDetalles">
+            <p *ngIf="!DtoOrderDetails.esServicio"> {{DtoOrderDetails.nombre}}, cantidad:{{DtoOrderDetails.cantidad}}, precio unitario: ${{DtoOrderDetails.precioVenta}}, garantia:{{DtoOrderDetails.garantia}}   </p>
+            <p *ngIf="DtoOrderDetails.esServicio"> {{DtoOrderDetails.nombre}}, precio mensual: ${{DtoOrderDetails.precioVenta}}, precio delsoporte: ${{DtoOrderDetails.precioSoporte}} </p>
+
 
 
           </div>
