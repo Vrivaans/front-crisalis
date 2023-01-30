@@ -82,7 +82,7 @@ export class NewPedidoComponent {
 
   fechaPedido: string = ""
   totalPedido: number = 0
-  activo: boolean = false
+  activo: boolean = true
   garantia: number = 0
   cantidad: number = 0
   cliente!: Cliente
@@ -157,8 +157,8 @@ export class NewPedidoComponent {
 
     }
     dtoOrderDetails.nombre = nombre
-    dtoOrderDetails.cantidad = 1
-    dtoOrderDetails.garantia = 1
+    dtoOrderDetails.cantidad = this.cantidad
+    dtoOrderDetails.garantia = this.garantia
     dtoOrderDetails.precioVenta = precioBase
     dtoOrderDetails.esServicio = false
     dtoOrderDetails.precioSoporte = 0
@@ -167,6 +167,24 @@ export class NewPedidoComponent {
 
   }
   getServicio(nombre: string, precioBase: number, soportePrecio: number){
+
+    let dtoOrderDetails: DtoOrderDetails = {
+      nombre:"",
+      cantidad: 0,
+      garantia: 0,
+      precioVenta: 0,
+      esServicio: false,
+      precioSoporte: 0
+
+    }
+    dtoOrderDetails.nombre = nombre
+    dtoOrderDetails.cantidad = 0
+    dtoOrderDetails.garantia = 0
+    dtoOrderDetails.precioVenta = precioBase
+    dtoOrderDetails.esServicio = true
+    dtoOrderDetails.precioSoporte = soportePrecio
+
+    this.listaDetalles.push(dtoOrderDetails)
 
   }
 

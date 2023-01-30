@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
-<!--
+
 <div class="SinLogear" *ngIf="!esta_logeado"><h1>Por favor, inicie sesión para continuar</h1></div>
-<div class="pedidos" *ngIf="esta_logeado" >  --> DESBLOQUEAR CUANDO TERMINE LAS PRUEBAS
+<div class="pedidos" *ngIf="esta_logeado" >  DESBLOQUEAR CUANDO TERMINE LAS PRUEBAS
 
 
 <div class="container">
@@ -10,8 +10,8 @@
       <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
 
           <div class="form-group">
-            <label for="cuit" class="form-label">Fecha del pedido</label>
-            <input type="text" class="form-control" id="fechaPedido" name="cuit" [(ngModel)]="fechaPedido" required>
+            <label for="fechaPedido" class="form-label">Fecha del pedido</label>
+            <input type="text" class="form-control" id="fechaPedido" name="fechaPedido" [(ngModel)]="fechaPedido" required>
           </div>
           <div class="form-group">
             <label for="totalPedido" class="form-label">Total del pedido (prueba)</label>
@@ -88,18 +88,29 @@
           <!-- Espacio para colocar la lista de productos cuando haya una empresa seleccionada o un cliente -->
           <div class="pt-3" *ngIf="isSelectedCliente && !esEmpresa || isSelectedEmpresa && esEmpresa   ">
 
-            <div class="btn-group">
-              <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                Ver lista de productos
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-             <div   *ngFor="let Producto of listaProductos">
-              <!-- POR LAS DUDAS DE QUE ALGO SALGA MAL, LA LINEA DEL BOTÓN ES ESTA XD -->
-              <li><button class="dropdown-item" type="button" (click)="getProducto(Producto.nombre, Producto.precioBase)"> {{Producto.nombre}} ${{Producto.precioBase}} </button></li>
 
-             </div>
-              </ul>
-            </div>
+                <div *ngFor="let Producto of listaProductos">
+                  <div class="row">
+                    <div class="col"> <p>{{Producto.nombre}} ${{Producto.precioBase}} </p> </div>
+
+
+                      <div class="form-group col">
+                      <label for="cantidad" class="form-label">¿Cuántos quiere?</label>
+                      <input type="text" onfocus="this.value=''" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="cantidad" required>
+                    </div>
+                    <div class="form-group col">
+                      <label for="garantia" class="form-label">¿Años de garantía?</label>
+                      <input type="text" onfocus="this.value=''" class="form-control" id="garantia" name="garantia" [(ngModel)]="garantia" required>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-dark" type="button" (click)="getProducto(Producto.nombre, Producto.precioBase)"> Agregar </button>
+                    </div>
+
+                  </div>
+
+                </div>
+
+
 
             <div class="btn-group">
               <button type="button" class="btn btn-dark dropdown-toggle ps-3 ms-3" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -107,6 +118,7 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
              <div   *ngFor="let Servicio of listaServicios">
+              <!-- Y ESTA OTRA :V (LA ORIGINAL ESTÁ EN EL NOTION) -->
               <li><button class="dropdown-item" type="button" (click)="getServicio(Servicio.nombre, Servicio. precioBase, Servicio.soportePrecio)"> {{Servicio.nombre}}, ${{Servicio.precioBase}}, soporte: ${{Servicio.soportePrecio}} </button></li>
 
              </div>
@@ -115,8 +127,8 @@
 
           </div>
           <div class="listaItems" *ngFor="let DtoOrderDetails of listaDetalles">
-            <p *ngIf="!DtoOrderDetails.esServicio"> {{DtoOrderDetails.nombre}}, cantidad:{{DtoOrderDetails.cantidad}}, precio unitario: ${{DtoOrderDetails.precioVenta}}, garantia:{{DtoOrderDetails.garantia}}   </p>
-            <p *ngIf="DtoOrderDetails.esServicio"> {{DtoOrderDetails.nombre}}, precio mensual: ${{DtoOrderDetails.precioVenta}}, precio delsoporte: ${{DtoOrderDetails.precioSoporte}} </p>
+            <p *ngIf="!DtoOrderDetails.esServicio"> {{DtoOrderDetails.nombre}}, precio unitario: ${{DtoOrderDetails.precioVenta}}, cantidad:{{DtoOrderDetails.cantidad}}, garantia:{{DtoOrderDetails.garantia}}   </p>
+            <p *ngIf="DtoOrderDetails.esServicio"> {{DtoOrderDetails.nombre}}, precio mensual: ${{DtoOrderDetails.precioVenta}}, precio del soporte: ${{DtoOrderDetails.precioSoporte}} </p>
 
 
 
