@@ -1,3 +1,4 @@
+import { DtoOrder } from './../Models/dtoOrder';
 import { OrderE } from './../Models/ordere';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -19,8 +20,12 @@ export class PedidosServicesService {
     return this.httpClient.get<OrderE>(this.url + `/detail/${id}`)
   }
 
-  public save(empresa: OrderE): Observable<any>{
-    return this.httpClient.post<any>(this.url + '/crear/pedido', empresa)
+  public save(order: OrderE): Observable<any>{
+    return this.httpClient.post<any>(this.url + '/crear/pedido', order)
+  }
+
+  public saveDto(dtoOrder: DtoOrder): Observable<any>{
+    return this.httpClient.post<any>(this.url + '/crear/dtopedido', dtoOrder)
   }
 
   // public update(id: number, empresa: OrderE):Observable<any>{

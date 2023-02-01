@@ -14,6 +14,7 @@ import { Cliente } from 'src/app/Models/cliente';
 import { OrderDetail } from 'src/app/Models/orderDetail';
 import { Servicio } from 'src/app/Models/servicio';
 import { literalMap } from '@angular/compiler';
+import { DtoOrder } from 'src/app/Models/dtoOrder';
 
 
 @Component({
@@ -183,7 +184,6 @@ export class NewPedidoComponent {
     dtoOrderDetails.precioVenta = precioBase
     dtoOrderDetails.esServicio = true
     dtoOrderDetails.precioSoporte = soportePrecio
-
     this.listaDetalles.push(dtoOrderDetails)
 
   }
@@ -191,18 +191,33 @@ export class NewPedidoComponent {
 
 
   onCreate(){
-    const order = new OrderE(this.fechaPedido, this.totalPedido, this.activo, this.cliente, this.empresa, this.orderDetails)
-    this.pedidoServices.save(order).subscribe(
+    // const order = new OrderE(this.fechaPedido, this.totalPedido, this.activo, this.cliente, this.empresa, this.orderDetails)
+    // this.pedidoServices.save(order).subscribe(
+    //   data =>{
+
+    //     //this.router.navigate([''])
+    //     window.location.reload();
+
+    //   }, err => {
+    //     //alert("Hubo un error al cargar")
+    //     window.location.reload();
+    //   }
+    //   )
+
+    const order = new DtoOrder(this.fechaPedido, this.totalPedido, this.activo, this.clienteAux.dniCliente, this.empresaAux.cuit, this.listaDetalles)
+    this.pedidoServices.saveDto(order).subscribe(
       data =>{
-
-        //this.router.navigate([''])
-        window.location.reload();
-
+        this.router.navigate(['/pedidos'])
+        console.log(order)
+        console.log(order.orderDetails)
+        //window.location.reload()
       }, err => {
-        //alert("Hubo un error al cargar")
-        window.location.reload();
+             //alert("Hubo un error al cargar")
+             window.location.reload();
       }
-      )
+    )
+
+
   }
 }
 
