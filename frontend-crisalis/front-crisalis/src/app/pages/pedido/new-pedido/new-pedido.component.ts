@@ -131,6 +131,7 @@ export class NewPedidoComponent {
       this.clienteAux.apellido = apellido
       this.clienteAux.nombre = nombre
        this.isSelectedCliente = true
+       this.vaciarEmpresa()
     } else {
       this.vaciarCliente();
     }
@@ -141,6 +142,7 @@ export class NewPedidoComponent {
       this.empresaAux.razonSocial = razonSocial
       this.empresaAux.cuit = cuit
       this.isSelectedEmpresa = true
+      this.vaciarCliente();
     } else {
       this.vaciarEmpresa()
     }
