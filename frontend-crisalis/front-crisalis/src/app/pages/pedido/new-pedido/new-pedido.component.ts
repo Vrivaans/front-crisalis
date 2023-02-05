@@ -83,7 +83,7 @@ export class NewPedidoComponent {
 
   fechaPedido: string = ""
   totalPedido: number = 0
-  activo: boolean = true
+  activo: boolean = false
   garantia: number = 0
   cantidad: number = 0
   cliente!: Cliente
