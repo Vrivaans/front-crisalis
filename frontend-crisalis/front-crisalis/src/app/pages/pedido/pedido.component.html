@@ -11,11 +11,11 @@
   <!-- <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#nuevoPedidoModal">Nuevo pedido</button> -->
 
 
-  <!-- <div class="modal fade" id="nuevoPedidoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="verDetallesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="exampleModalLabel">Nuevo pedido</h3>
+          <h3 class="modal-title" id="exampleModalLabel">Ver detalles</h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body pb-3">
@@ -78,16 +78,33 @@
           </td>
            <td *ngIf="OrderE.empresa != null">
                 {{OrderE.empresa.razonSocial}}
-           </td>
-
+            </td>
           <td>
-            <button class="btn btn-secondary">Editar</button>
+            <button class="btn btn-secondary" (click)="mostrarListaDetalles(OrderE.id)" data-bs-toggle="modal" data-bs-target="#verDetallesModal" >Ver</button>
             <button class="btn btn-danger" (click)="estadoPedido(OrderE.id)" *ngIf="OrderE.activo">Dar de baja</button>
             <button class="btn btn-dark" (click)="estadoPedido(OrderE.id)" *ngIf="!OrderE.activo">Dar de alta</button>
+
+            <div class="modal fade" id="verDetallesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Ver detalles</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body pb-3" *ngFor=" let item of listaDetallesDto">
+                    <p *ngIf="!item.esServicio">Nombre del producto: {{item.nombre}}, cantidad:{{item.cantidad}}, {{item.garantia}}, precio unitario: ${{item.precioVenta}}</p>
+                    <p *ngIf="item.esServicio"> Nombre del servicio: {{item.nombre}}, precio mensual: {{item.precioVenta}} ,precio del soporte: ${{item.precioSoporte}}  </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
           </td>
 
 
         </tr>
+
       </tbody>
     </table>
   </div>

@@ -1,3 +1,4 @@
+import { ServiciosContratados } from './../../Models/serviciosContratados';
 import { TokenService } from 'src/app/services/token.service';
 import { ClienteServicesService } from './../../services/cliente-services.service';
 import { Component } from '@angular/core';
@@ -10,6 +11,7 @@ import { Cliente } from 'src/app/Models/cliente';
 })
 export class ClienteComponent {
 cliente: Cliente[] = [];
+serviciosCliente: ServiciosContratados[] = [];
 
 constructor(private clienteServices: ClienteServicesService, private tokenService: TokenService){}
 
@@ -40,6 +42,11 @@ delete(id?:number){
       }
     )
   }
+}
+
+mostrarServiciosContratados(id?: number){
+  let idN = id as number
+  this.clienteServices.serviciosCliente(idN).subscribe(data => {this.serviciosCliente = data;})
 }
 
 }

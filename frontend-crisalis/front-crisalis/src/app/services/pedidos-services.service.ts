@@ -3,6 +3,7 @@ import { OrderE } from './../Models/ordere';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DtoOrderDetails } from '../Models/dtoOrderDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +41,9 @@ export class PedidosServicesService {
     return this.httpClient.get<any>(this.url + `/estado/pedido/${id}`)
     console.log("se hizo peticion", + id)
 
+  }
+
+  public traerDetalles(id: number): Observable<DtoOrderDetails[]>{
+    return this.httpClient.get<DtoOrderDetails[]> (this.url + `/traer/detalles/${id}`)
   }
 }

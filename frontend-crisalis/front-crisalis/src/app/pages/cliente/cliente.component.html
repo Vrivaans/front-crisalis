@@ -1,33 +1,51 @@
 <app-navbar></app-navbar>
-<div class="SinLogear" *ngIf="!esta_logeado"><h1>Por favor, inicie sesión para continuar</h1></div>
-<div class="clientes" *ngIf="esta_logeado">
-<div class="row">
-  <h1>Lista de clientes</h1>
+<div class="SinLogear" *ngIf="!esta_logeado">
+  <h1>Por favor, inicie sesión para continuar</h1>
 </div>
-<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#nuevoClienteModal">Nuevo cliente</button>
+<div class="clientes" *ngIf="esta_logeado">
+  <div class="row">
+    <h1>Lista de clientes</h1>
+  </div>
+  <button
+    class="btn btn-dark"
+    data-bs-toggle="modal"
+    data-bs-target="#nuevoClienteModal"
+  >
+    Nuevo cliente
+  </button>
 
-<!-- Modal -->
-<div class="modal fade" id="nuevoClienteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nuevo cliente</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="nuevoClienteModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nuevo cliente</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <app-new-cliente></app-new-cliente>
+        </div>
       </div>
-      <div class="modal-body">
-        <app-new-cliente></app-new-cliente>
-      </div>
-
     </div>
   </div>
-</div>
 
-<div>
-  <table class="table mt-7">
-    <tbody>
-      <td>
-        <h5>ID</h5>
-      </td>
+  <div>
+    <table class="table mt-7">
+      <tbody>
+        <td>
+          <h5>ID</h5>
+        </td>
         <td>
           <h5>Nombre</h5>
         </td>
@@ -38,31 +56,64 @@
           <h5>Dni</h5>
         </td>
 
-      <tr *ngFor="let Cliente of cliente">
-        <td>
-          <p>{{Cliente.id}}</p>
-        </td>
-        <td>
-          <p>{{Cliente.nombre}}</p>
-        </td>
-        <td>
-           <p>{{Cliente.apellido}}</p>
-        </td>
-        <td>
+        <tr *ngFor="let Cliente of cliente">
+          <td>
+            <p>{{ Cliente.id }}</p>
+          </td>
+          <td>
+            <p>{{ Cliente.nombre }}</p>
+          </td>
+          <td>
+            <p>{{ Cliente.apellido }}</p>
+          </td>
+          <td>
+            <p>{{ Cliente.dniCliente }}</p>
+          </td>
 
-          <p>{{Cliente.dniCliente}}</p>
+          <td>
+            <button
+              class="btn btn-dark"
+              (click)="mostrarServiciosContratados(Cliente.id)"
+              data-bs-toggle="modal"
+              data-bs-target="#verCliente"
+            >
+              Ver cliente
+            </button>
+            <button class="btn btn-secondary">Editar</button>
+            <button class="btn btn-danger" (click)="delete(Cliente.id)">
+              Borrar
+            </button>
+          </td>
 
-        </td>
-
-        <td>
-          <button class="btn btn-dark">Ver cliente</button>
-          <button class="btn btn-secondary">Editar</button>
-          <button class="btn btn-danger" (click)="delete(Cliente.id)">Borrar</button>
-        </td>
-
-
-      </tr>
-    </tbody>
-  </table>
-</div>
+          <div
+            class="modal fade"
+            id="verCliente"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLabel">
+                    Ver detalles
+                  </h3>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div *ngIf="serviciosCliente.length === 0" class="ps-3 pt-1" > <p> Por el momento este cliente no tiene ningún servicio contratado</p></div>
+                <div *ngFor="let servicioContratado of serviciosCliente" class="ps-3 pt-1">
+                    <p> Nombre del servicio: {{servicioContratado.nombreServicio}}, Precio Mensual: ${{servicioContratado.precioBase}}, Precio del soporte: {{servicioContratado.soportePrecio}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

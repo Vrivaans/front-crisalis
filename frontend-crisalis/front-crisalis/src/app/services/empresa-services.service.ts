@@ -1,7 +1,9 @@
+import { ServiciosContratados } from './../Models/serviciosContratados';
 import { Empresa } from './../Models/empresa';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { OrderE } from '../Models/ordere';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +31,11 @@ export class EmpresaServicesService {
 
   public delete(id: number): Observable<any>{
     return this.httpClient.delete<any>(this.url + `/borrar/empresa/${id}`)
+  }
+  public serviciosEmpresa(id: number): Observable<ServiciosContratados[]>{
+    return this.httpClient.get<ServiciosContratados[]> (this.url + `/traer/servicios/empresa/${id}`)
+  }
+  public pedidosEmpresa(id: number): Observable<OrderE[]>{
+    return this.httpClient.get<OrderE[]>(this.url + `/traer/pedidos/empresa/${id}`)
   }
 }
