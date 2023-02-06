@@ -31,17 +31,26 @@ export class PedidoComponent {
       this.orderServices.lista().subscribe(data => {this.order = data;})
     }
 
-    delete(id?:number){
-      if(id != null){
-        this.orderServices.delete(id).subscribe(
-          data => {
-            this.cargarPedidos();
-          }, err => {
-            //alert("Hubo un error al borrar el cliente")
-            window.location.reload();
-          }
-        )
-      }
+
+    estadoPedido(id?: number){
+      console.log("click")
+      let idNumber = id as number
+         this.orderServices.cambiarEstado(idNumber).subscribe(data => {idNumber = data;})
+         window.location.reload()
     }
+
+
+    // delete(id?:number){
+    //   if(id != null){
+    //     this.orderServices.delete(id).subscribe(
+    //       data => {
+    //         this.cargarPedidos();
+    //       }, err => {
+    //         //alert("Hubo un error al borrar el cliente")
+    //         window.location.reload();
+    //       }
+    //     )
+    //   }
+    // }
 
 }

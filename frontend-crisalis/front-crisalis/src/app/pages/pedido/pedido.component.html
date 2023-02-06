@@ -82,7 +82,8 @@
 
           <td>
             <button class="btn btn-secondary">Editar</button>
-            <button class="btn btn-danger" (click)="delete(OrderE.id)">Borrar</button>
+            <button class="btn btn-danger" (click)="estadoPedido(OrderE.id)" *ngIf="OrderE.activo">Dar de baja</button>
+            <button class="btn btn-dark" (click)="estadoPedido(OrderE.id)" *ngIf="!OrderE.activo">Dar de alta</button>
           </td>
 
 

@@ -1,5 +1,7 @@
 import { DtoOrderDetails } from './dtoOrderDetails';
 export class DtoOrder{
+
+  id?: number
   fechaPedido!: string
   totalPedido!: number
   activo!: boolean

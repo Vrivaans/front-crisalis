@@ -35,4 +35,10 @@ export class PedidosServicesService {
   public delete(id: number): Observable<any>{
     return this.httpClient.delete<any>(this.url + `/borrar/pedido/${id}`)
   }
+
+  public cambiarEstado(id: number): Observable<any>{
+    return this.httpClient.get<any>(this.url + `/estado/pedido/${id}`)
+    console.log("se hizo peticion", + id)
+
+  }
 }
