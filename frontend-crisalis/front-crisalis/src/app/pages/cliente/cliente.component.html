@@ -77,8 +77,16 @@
               data-bs-toggle="modal"
               data-bs-target="#verCliente"
             >
-              Ver cliente
+              Ver servicios de cliente
             </button>
+            <button
+            class="btn btn-dark"
+            (click)="mostrarPedidos(Cliente.id)"
+            data-bs-toggle="modal"
+            data-bs-target="#verPedidosCliente"
+          >
+            Ver pedidos de cliente
+          </button>
             <button class="btn btn-secondary">Editar</button>
             <button class="btn btn-danger" (click)="delete(Cliente.id)">
               Borrar
@@ -112,6 +120,36 @@
               </div>
             </div>
           </div>
+
+          <!-- VER LOS PEDIDOS DEL CLIENTE -->
+          <div
+          class="modal fade"
+          id="verPedidosCliente"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">
+                  Ver detalles
+                </h3>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div *ngIf="pedidosCliente.length === 0" class="ps-3 pt-1" > <p> Por el momento este cliente no tiene ningún pedido</p></div>
+              <div *ngFor="let pedido of pedidosCliente" class="ps-3 pt-1">
+                  <p> id: {{pedido.id}}, Fecha del pedido: ${{pedido.fechaPedido}}, ¿Activo?: {{pedido.activo}}, Valor total del pedido: ${{pedido.totalPedido}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         </tr>
       </tbody>
     </table>

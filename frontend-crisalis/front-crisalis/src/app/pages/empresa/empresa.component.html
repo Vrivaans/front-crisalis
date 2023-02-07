@@ -74,23 +74,23 @@
 
         <td>
           <button
-          class="btn btn-dark"
+          class="btn btn-dark btn-sm"
           (click)="mostrarServiciosContratados(Empresa.id)"
           data-bs-toggle="modal"
           data-bs-target="#verEmpresa"
         >
-          Ver servicios de la empresa
+          Ver servicios de empresa
         </button>
         <button
-        class="btn btn-dark"
+        class="btn btn-dark btn-sm"
         (click)="mostrarPedidos(Empresa.id)"
         data-bs-toggle="modal"
         data-bs-target="#verPedidosEmpresa"
       >
-        Ver pedidos de la empresa
+        Ver pedidos de empresa
       </button>
-          <button class="btn btn-secondary">Editar</button>
-          <button class="btn btn-danger" (click)="delete(Empresa.id)">Borrar</button>
+          <button class="btn btn-secondary btn-sm">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="delete(Empresa.id)">Borrar</button>
         </td>
 
         <div

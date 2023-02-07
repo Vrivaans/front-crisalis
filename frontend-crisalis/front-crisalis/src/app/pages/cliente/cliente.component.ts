@@ -1,3 +1,4 @@
+import { OrderE } from './../../Models/ordere';
 import { ServiciosContratados } from './../../Models/serviciosContratados';
 import { TokenService } from 'src/app/services/token.service';
 import { ClienteServicesService } from './../../services/cliente-services.service';
@@ -12,6 +13,7 @@ import { Cliente } from 'src/app/Models/cliente';
 export class ClienteComponent {
 cliente: Cliente[] = [];
 serviciosCliente: ServiciosContratados[] = [];
+pedidosCliente: OrderE[] = []
 
 constructor(private clienteServices: ClienteServicesService, private tokenService: TokenService){}
 
@@ -47,6 +49,10 @@ delete(id?:number){
 mostrarServiciosContratados(id?: number){
   let idN = id as number
   this.clienteServices.serviciosCliente(idN).subscribe(data => {this.serviciosCliente = data;})
+}
+mostrarPedidos(id?: number){
+  let idN = id as number
+  this.clienteServices.pedidosCliente(idN).subscribe(data => {this.pedidosCliente = data;})
 }
 
 }
