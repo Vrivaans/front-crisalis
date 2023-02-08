@@ -1,3 +1,4 @@
+import { PedidosServicesService } from './../../services/pedidos-services.service';
 import { OrderE } from './../../Models/ordere';
 import { ServiciosContratados } from './../../Models/serviciosContratados';
 import { TokenService } from 'src/app/services/token.service';
@@ -15,7 +16,7 @@ cliente: Cliente[] = [];
 serviciosCliente: ServiciosContratados[] = [];
 pedidosCliente: OrderE[] = []
 
-constructor(private clienteServices: ClienteServicesService, private tokenService: TokenService){}
+constructor(private clienteServices: ClienteServicesService, private tokenService: TokenService, private orderServices: PedidosServicesService){}
 
 esta_logeado = false;
 
@@ -53,6 +54,14 @@ mostrarServiciosContratados(id?: number){
 mostrarPedidos(id?: number){
   let idN = id as number
   this.clienteServices.pedidosCliente(idN).subscribe(data => {this.pedidosCliente = data;})
+}
+estadoServicio(id?: number){
+  let idN = id as number
+  this.clienteServices.cambiarEstadoServicio(idN).subscribe(data => {idN = data;})
+}
+estadoPedido(id?: number){
+  let idN = id as number
+  this.orderServices.cambiarEstado(idN).subscribe(data => {idN = data;})
 }
 
 }

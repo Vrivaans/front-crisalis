@@ -1,3 +1,4 @@
+import { PedidosServicesService } from './../../services/pedidos-services.service';
 import { OrderE } from './../../Models/ordere';
 import { ServiciosContratados } from './../../Models/serviciosContratados';
 import { EmpresaServicesService } from './../../services/empresa-services.service';
@@ -17,7 +18,7 @@ export class EmpresaComponent {
   pedidosEmpresa: OrderE [] = []
   esta_logeado = false;
 
-  constructor(private router: Router, private tokenService: TokenService, private empresaServices: EmpresaServicesService){}
+  constructor(private router: Router, private tokenService: TokenService, private empresaServices: EmpresaServicesService, private orderServices: PedidosServicesService){}
 
   ngOnInit(): void {
     this.cargarEmpresas();
@@ -41,6 +42,15 @@ mostrarPedidos(id?: number){
   let idN: number = id as number
   this.empresaServices.pedidosEmpresa(idN).subscribe(data => {this.pedidosEmpresa = data;})
 
+}
+estadoServicio(id?: number){
+  let idN = id as number
+  this.empresaServices.cambiarEstadoServicio(idN).subscribe(data => {idN = data;})
+}
+
+estadoPedido(id?: number){
+  let idN = id as number
+  this.orderServices.cambiarEstado(idN).subscribe(data => {idN = data;})
 }
 
 delete(id?:number){

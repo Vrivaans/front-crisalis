@@ -40,5 +40,8 @@ export class ClienteServicesService {
   public pedidosCliente(id: number): Observable<OrderE[]>{
     return this.httpClient.get<OrderE[]>(this.url + `/traer/pedidos/cliente/${id}`)
   }
+  public cambiarEstadoServicio(id: number): Observable<any>{
+    return this.httpClient.get<any>(this.url + `/estado/servicio/${id}`)
+  }
 
 }

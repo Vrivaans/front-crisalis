@@ -115,7 +115,10 @@
                 </div>
                 <div *ngIf="serviciosEmpresa.length === 0" class="ps-3 pt-1" > <p> Por el momento esta empresa no tiene ningún servicio contratado</p></div>
                 <div *ngFor="let servicioContratado of serviciosEmpresa" class="ps-3 pt-1">
-                    <p> Nombre del servicio: {{servicioContratado.nombreServicio}}, Precio Mensual: ${{servicioContratado.precioBase}}, Precio del soporte: {{servicioContratado.soportePrecio}}</p>
+                    <p> Nombre del servicio: {{servicioContratado.nombreServicio}}, Precio Mensual: ${{servicioContratado.precioBase}}, Precio del soporte: {{servicioContratado.soportePrecio}} ¿Activo?: {{servicioContratado.activo}}
+                      <button class="btn btn-danger" (click)="estadoServicio(servicioContratado.id)" *ngIf="servicioContratado.activo" >Dar de baja</button>
+                      <button class="btn btn-dark" (click)="estadoServicio(servicioContratado.id)" *ngIf="!servicioContratado.activo" >Dar de alta</button> </p>
+
                 </div>
               </div>
             </div>
@@ -143,7 +146,10 @@
               </div>
               <div *ngIf="pedidosEmpresa.length === 0" class="ps-3 pt-1" > <p> Por el momento esta empresa no tiene ningún pedido</p></div>
               <div *ngFor="let pedido of pedidosEmpresa" class="ps-3 pt-1">
-                  <p> id: {{pedido.id}}, Fecha del pedido: ${{pedido.fechaPedido}}, ¿Activo?: {{pedido.activo}}, Valor total del pedido: ${{pedido.totalPedido}} </p>
+                  <p> id: {{pedido.id}}, Fecha del pedido: ${{pedido.fechaPedido}}, ¿Activo?: {{pedido.activo}}, Valor total del pedido: ${{pedido.totalPedido}}
+                    <button class="btn btn-danger" (click)="estadoPedido(pedido.id)" *ngIf="pedido.activo" >Dar de baja</button>
+                      <button class="btn btn-dark" (click)="estadoPedido(pedido.id)" *ngIf="!pedido.activo" >Dar de alta</button>
+                  </p>
               </div>
             </div>
           </div>
