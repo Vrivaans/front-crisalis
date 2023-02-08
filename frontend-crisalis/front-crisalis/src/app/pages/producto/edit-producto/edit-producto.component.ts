@@ -68,7 +68,6 @@ export class EditProductoComponent {
   }
 
   onUpdate(){
-    console.log("click")
     const id = this.activatedRouter.snapshot.params['id'];
     this.producto.precioBase = this.precioBase
     this.producto.nombre = this.nombre
