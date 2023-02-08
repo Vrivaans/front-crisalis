@@ -23,6 +23,10 @@ import { EmpresaComponent } from './pages/empresa/empresa.component';
 import { NewEmpresaComponent } from './pages/empresa/new-empresa/new-empresa.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { NewPedidoComponent } from './pages/pedido/new-pedido/new-pedido.component';
+import { EditClienteComponent } from './pages/cliente/edit-cliente/edit-cliente.component';
+import { EditEmpresaComponent } from './pages/empresa/edit-empresa/edit-empresa.component';
+import { EditProductoComponent } from './pages/producto/edit-producto/edit-producto.component';
+import { EditServicioComponent } from './pages/servicio/edit-servicio/edit-servicio.component';
 
 
 //import { interceptorProvider } from './services/interceptor-service';
@@ -46,7 +50,11 @@ import { NewPedidoComponent } from './pages/pedido/new-pedido/new-pedido.compone
     EmpresaComponent,
     NewEmpresaComponent,
     PedidoComponent,
-    NewPedidoComponent
+    NewPedidoComponent,
+    EditClienteComponent,
+    EditEmpresaComponent,
+    EditProductoComponent,
+    EditServicioComponent
   ],
   imports: [
     BrowserModule,

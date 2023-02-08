@@ -19,7 +19,7 @@ export class ProductoServicesService {
   }
 
   public detail(id:number):Observable<Producto>{
-    return this.httpClient.get<Producto>(this.url + `/detail/${id}`)
+    return this.httpClient.get<Producto>(this.url + `/detail-producto/${id}`)
   }
 
   public save(producto: Producto): Observable<any>{

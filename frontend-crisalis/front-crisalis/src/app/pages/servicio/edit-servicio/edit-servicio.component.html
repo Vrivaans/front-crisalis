@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+          <div class="form-group">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="precioBase" class="form-label">Precio base</label>
+            <input type="text" class="form-control" id="precioBase" name="precioBase" [(ngModel)]="precioBase" required>
+          </div>
+          <div class="form-group pt-1">
+            <label for="soportePrecio" class="form-label">Precio del soporte</label>
+            <input type="text" class="form-control" id="soportePrecio" name="soportePrecio" [(ngModel)]="soportePrecio" required>
+          </div>
+
+          <div class="btn-group pt-3 pb-3" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btncheck1" (click)="ivaChange()" >¿Aplica IVA?</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btncheck2" (click)="iBrutosChange()">¿Aplica IIBB?</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btncheck3" (click)="gananciasChange()">¿Aplica Ganancias?</label>
+          </div>
+
+          <button class="btn btn-primary">Editar servicio</button>
+      </form>
+    </div>
+  </div>
+</div>

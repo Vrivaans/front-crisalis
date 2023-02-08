@@ -18,7 +18,7 @@ export class EmpresaServicesService {
   }
 
   public detail(id:number):Observable<Empresa>{
-    return this.httpClient.get<Empresa>(this.url + `/detail/${id}`)
+    return this.httpClient.get<Empresa>(this.url + `/detail-empresa/${id}`)
   }
 
   public save(empresa: Empresa): Observable<any>{

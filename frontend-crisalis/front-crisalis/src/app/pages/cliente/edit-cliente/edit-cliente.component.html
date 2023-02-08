@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+        <div class="form-group">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            name="nombre"
+            [(ngModel)]="nombre"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="apellido" class="form-label">Apellido</label>
+          <input
+            type="text"
+            class="form-control"
+            id="apellido"
+            name="apellido"
+            [(ngModel)]="apellido"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="dniCliente" class="form-label">DNI</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dniCliente"
+            name="dniCliente"
+            [(ngModel)]="dniCliente"
+            required
+          />
+        </div>
+
+        <button class="btn btn-primary">Editar cliente</button>
+      </form>
+    </div>
+  </div>
+</div>
